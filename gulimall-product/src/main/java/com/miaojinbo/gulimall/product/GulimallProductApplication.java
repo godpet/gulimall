@@ -19,6 +19,12 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  *              1)MapperScan
  *              2）告诉myBatis-plus  sql映射文件的位置
  *
+ * 2、逻辑删除
+ *      1)配置全局的逻辑删除规则
+ *      2)配置逻辑删除组件
+ *      3)为Bean添加逻辑删除注解@TableLogic
+ *
+ *
  *
  *
  */
