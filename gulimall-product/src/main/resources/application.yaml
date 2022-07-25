@@ -9,8 +9,19 @@ spring:
     nacos:
       discovery:
         server-addr: 106.15.39.156:8848
+
+    alicloud:
+      access-key: LTAI5tJnuz62L8xA18Ww86eP
+      secret-key: UNjFwBwW4sBzlVr9el8wojHmV9teZk
+      oss:
+        endpoint: oss-cn-shanghai.aliyuncs.com
+
+
+
+
   application:
     name: gulimall-product
+
 
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml
@@ -22,7 +33,15 @@ mybatis-plus:
 
 server:
   port: 10000
+  error:
+    include-binding-errors: always
+    include-message: always
 
 logging:
   level:
     com.miaojinbo.gulimall: debug
+
+
+
+
+

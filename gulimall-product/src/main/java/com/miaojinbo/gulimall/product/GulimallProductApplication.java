@@ -24,8 +24,23 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  *      2)配置逻辑删除组件
  *      3)为Bean添加逻辑删除注解@TableLogic
  *
+ * 3、JSR303
+ *      1)给Bean添加校验注解，自定义message提示
+ *      2)开启校验功能 @Valid
+ *      3)校验的Bean后紧跟BindingResult，获取校验的结果
+ *      4)分组校验
+ *          1)校验注解添加分组
+ *          2)@Validated({AddGroup.class})
+ *          3)没有指定分组的校验注解，分组校验时不生效，只会在Validated时生效
+ *      5)自定义校验
+ *          1)编写一个自定义的校验注解
+ *          2)编写一个自定义的校验器 ConstraintValidator
+ *          3)关联自定义的校验器和自定义的校验注解
  *
- *
+ * 4、统一的异常处理
+ * @ControllerAdvice
+ *      1)编写异常处理类，使用@ControllerAdvice
+ *      2)使用@ExceptionHandler标注方法可以处理的异常
  *
  */
 

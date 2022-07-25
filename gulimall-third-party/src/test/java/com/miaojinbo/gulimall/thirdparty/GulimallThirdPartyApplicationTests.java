@@ -1,10 +1,8 @@
-package com.miaojinbo.gulimall.product;
+package com.miaojinbo.gulimall.thirdparty;
 
-
-import com.aliyun.oss.*;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.miaojinbo.gulimall.product.entity.BrandEntity;
-import com.miaojinbo.gulimall.product.service.BrandService;
+import com.aliyun.oss.ClientException;
+import com.aliyun.oss.OSSClient;
+import com.aliyun.oss.OSSException;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,24 +12,19 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.util.List;
-
-/**
- * 1 引入 oss-starter
- * 2 配置 key secret endpoint等信息
- * 3 注入 OSSClient
- */
 
 
-@RunWith(SpringRunner.class)
+
 @SpringBootTest
-class GulimallProductApplicationTests {
-
-    @Autowired
-    BrandService brandService;
+class GulimallThirdPartyApplicationTests {
 
     @Autowired
     OSSClient ossClient;
+
+    @Test
+    void contextLoads() {
+    }
+
 
     @Test
     public void testUpload() throws FileNotFoundException {
@@ -77,20 +70,6 @@ class GulimallProductApplicationTests {
 
     }
 
-    @Test
-    void contextLoads() {
 
-//        BrandEntity brandEntity = new BrandEntity();
-//
-//        brandEntity.setName("华为");
-//        brandService.save(brandEntity);
-//        System.out.println("保存成功");
-
-        List<BrandEntity> list = brandService.list(new QueryWrapper<BrandEntity>().eq("brand_id", 1l));
-        list.forEach((o)->{
-            System.out.println(o);
-        });
-
-    }
 
 }

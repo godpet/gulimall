@@ -1,9 +1,15 @@
 package com.miaojinbo.gulimall.product.controller;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 
+import com.miaojinbo.common.valid.AddGroup;
+import com.miaojinbo.common.valid.UpdateGroup;
+import com.miaojinbo.common.valid.UpdateStatusGroup;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +21,7 @@ import com.miaojinbo.gulimall.product.service.BrandService;
 import com.miaojinbo.common.utils.PageUtils;
 import com.miaojinbo.common.utils.R;
 
+import javax.validation.Valid;
 
 
 /**
@@ -24,6 +31,8 @@ import com.miaojinbo.common.utils.R;
  * @email miao122015@163.com
  * @date 2022-07-11 17:55:13
  */
+
+@Validated
 @RestController
 @RequestMapping("product/brand")
 public class BrandController {
@@ -58,9 +67,24 @@ public class BrandController {
      */
     @RequestMapping("/save")
     //@RequiresPermissions("product:brand:save")
-    public R save(@RequestBody BrandEntity brand){
-		brandService.save(brand);
+    public R save(@Validated({AddGroup.class}) @RequestBody BrandEntity brand /*, BindingResult result*/){
 
+//        if(result.hasErrors()){
+//            HashMap<String, String> map = new HashMap<>();
+//            //获取校验的错误结果
+//            result.getFieldErrors().forEach((item) ->{
+//                //FieldError 获取错误提示
+//                String message = item.getDefaultMessage();
+//                //获取错误属性名
+//                String field = item.getField();
+//                map.put(field, message);
+//            });
+//            return R.error(400, "提交的数据不合法").put("data", map);
+//        }else{
+//            brandService.save(brand);
+//        }
+
+        brandService.save(brand);
         return R.ok();
     }
 
@@ -69,8 +93,19 @@ public class BrandController {
      */
     @RequestMapping("/update")
     //@RequiresPermissions("product:brand:update")
-    public R update(@RequestBody BrandEntity brand){
+    public R update(@Validated({UpdateGroup.class}) @RequestBody BrandEntity brand){
 		brandService.updateById(brand);
+
+        return R.ok();
+    }
+
+    /**
+     * 修改状态
+     */
+    @RequestMapping("/update/status")
+    //@RequiresPermissions("product:brand:update")
+    public R updateStatus(@Validated({UpdateStatusGroup.class}) @RequestBody BrandEntity brand){
+        brandService.updateById(brand);
 
         return R.ok();
     }
