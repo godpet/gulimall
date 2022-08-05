@@ -2,13 +2,15 @@ spring:
   datasource:
     username: root
     password: root
-    url: jdbc:mysql://106.15.39.156:3306/gulimall_pms
+    url: jdbc:mysql://47.101.37.18:3306/gulimall_pms
     driver-class-name: com.mysql.cj.jdbc.Driver
     #driver-class-name: com.mysql.jdbc.Driver
+
+
   cloud:
     nacos:
       discovery:
-        server-addr: 106.15.39.156:8848
+        server-addr: 47.101.37.18:8848
 
     alicloud:
       access-key: LTAI5tJnuz62L8xA18Ww86eP

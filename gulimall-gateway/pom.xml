@@ -49,7 +49,7 @@
         </dependency>
 
         <dependency>
-            <groupId></groupId>
+            <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
         </dependency>
 
