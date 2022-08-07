@@ -3,6 +3,7 @@ package com.miaojinbo.gulimall.product.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import com.miaojinbo.gulimall.product.vo.AttrGroupRelationVo;
 import com.miaojinbo.gulimall.product.vo.AttrRespVo;
 import com.miaojinbo.gulimall.product.vo.AttrVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,6 +78,7 @@ public class AttrController {
 
         return R.ok();
     }
+
 
     /**
      * 修改
