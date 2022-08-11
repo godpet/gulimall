@@ -3,8 +3,11 @@ package com.miaojinbo.gulimall.product.controller;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.miaojinbo.gulimall.product.entity.BrandEntity;
+import com.miaojinbo.gulimall.product.vo.BrandVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,6 +43,35 @@ public class CategoryBrandRelationController {
 
         return R.ok().put("data", data);
     }
+    
+    
+    ///product/categorybrandrelation/brands/list
+
+    /**
+     * 1、Controller：处理请求，接收和校验数据
+     * 2、Service接收Controller传来的数据，进行业务处理
+     * 3、Controller接收Service处理完成的数据，封装成页面指定的vo
+     * @param catId
+     * @return
+     */
+    @GetMapping("/brands/list")
+    public R relationBrandsList(@RequestParam(value = "catId", required = true) Long catId){
+        List<BrandEntity> vos = categoryBrandRelationService.getBrandsByCatId(catId);
+
+        List<BrandVo> collect = vos.stream().map(item -> {
+            BrandVo brandVo = new BrandVo();
+            brandVo.setBrandId(item.getBrandId());
+            brandVo.setBrandName(item.getName());
+
+            return brandVo;
+        }).collect(Collectors.toList());
+
+        return R.ok().put("data", collect);
+    }
+
+
+
+    
 
     /**
      * 列表

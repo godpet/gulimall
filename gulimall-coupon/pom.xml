@@ -45,6 +45,13 @@
             <scope>test</scope>
         </dependency>
 
+        <!--MyBatis-plus-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.5.0</version>
+        </dependency>
+
     </dependencies>
 
 
