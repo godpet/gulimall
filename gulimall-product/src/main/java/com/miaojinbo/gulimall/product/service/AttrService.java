@@ -3,6 +3,7 @@ package com.miaojinbo.gulimall.product.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.miaojinbo.common.utils.PageUtils;
 import com.miaojinbo.gulimall.product.entity.AttrEntity;
+import com.miaojinbo.gulimall.product.entity.ProductAttrValueEntity;
 import com.miaojinbo.gulimall.product.vo.AttrGroupRelationVo;
 import com.miaojinbo.gulimall.product.vo.AttrRespVo;
 import com.miaojinbo.gulimall.product.vo.AttrVo;
@@ -34,5 +35,6 @@ public interface AttrService extends IService<AttrEntity> {
     void deleteRelation(AttrGroupRelationVo[] vos);
 
     PageUtils getNoRelationAttr(Map<String, Object> params, Long attrgroupId);
+
 }
 

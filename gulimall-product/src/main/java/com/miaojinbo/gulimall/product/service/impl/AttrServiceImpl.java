@@ -5,9 +5,7 @@ import com.miaojinbo.common.constant.ProductConstant;
 import com.miaojinbo.gulimall.product.dao.AttrAttrgroupRelationDao;
 import com.miaojinbo.gulimall.product.dao.AttrGroupDao;
 import com.miaojinbo.gulimall.product.dao.CategoryDao;
-import com.miaojinbo.gulimall.product.entity.AttrAttrgroupRelationEntity;
-import com.miaojinbo.gulimall.product.entity.AttrGroupEntity;
-import com.miaojinbo.gulimall.product.entity.CategoryEntity;
+import com.miaojinbo.gulimall.product.entity.*;
 import com.miaojinbo.gulimall.product.service.CategoryService;
 import com.miaojinbo.gulimall.product.vo.AttrGroupRelationVo;
 import com.miaojinbo.gulimall.product.vo.AttrRespVo;
@@ -29,7 +27,6 @@ import com.miaojinbo.common.utils.PageUtils;
 import com.miaojinbo.common.utils.Query;
 
 import com.miaojinbo.gulimall.product.dao.AttrDao;
-import com.miaojinbo.gulimall.product.entity.AttrEntity;
 import com.miaojinbo.gulimall.product.service.AttrService;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -258,4 +255,6 @@ public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements
 
         return pageUtils;
     }
+
+
 }

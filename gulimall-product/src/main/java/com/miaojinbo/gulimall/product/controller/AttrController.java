@@ -1,8 +1,11 @@
 package com.miaojinbo.gulimall.product.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
+import com.miaojinbo.gulimall.product.entity.ProductAttrValueEntity;
+import com.miaojinbo.gulimall.product.service.ProductAttrValueService;
 import com.miaojinbo.gulimall.product.vo.AttrGroupRelationVo;
 import com.miaojinbo.gulimall.product.vo.AttrRespVo;
 import com.miaojinbo.gulimall.product.vo.AttrVo;
@@ -28,6 +31,21 @@ import com.miaojinbo.common.utils.R;
 public class AttrController {
     @Autowired
     private AttrService attrService;
+
+    @Autowired
+    ProductAttrValueService productAttrValueService;
+
+    /**
+     * 获取spu规格
+     * ///product/attr/base/listforspu/{spuId}
+     * @param spuId
+     * @return
+     */
+    @GetMapping("/base/listforspu/{spuId}")
+    public R baseAttrListForSpu(@PathVariable("spuId") Long spuId){
+        List<ProductAttrValueEntity> productAttrValueEntities = productAttrValueService.baseAttrListForSpu(spuId);
+        return R.ok().put("data", productAttrValueEntities);
+    }
 
 
     //product/attr/sale/list/{catelogId}
@@ -88,6 +106,18 @@ public class AttrController {
     public R update(@RequestBody AttrVo attr){
 		attrService.updateAttr(attr);
 
+        return R.ok();
+    }
+
+
+    /**
+     * //product/attr/base/listforspu/{spuId}
+     * 修改商品规格
+     */
+    @PostMapping("/update/{spuId}")
+    public R updateSpuAttr(@PathVariable Long spuId,
+                           @RequestBody List<ProductAttrValueEntity> entities){
+        productAttrValueService.updateSpuAttr(spuId, entities);
         return R.ok();
     }
 
